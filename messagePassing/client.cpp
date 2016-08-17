@@ -1,5 +1,10 @@
-//IPC_msgq_send.c
- 
+/*
+EXPT NO.04
+VINOD KUMAR S
+S7-R-062
+29/07/2016
+MESSAGE PASSING CLIENT
+*/ 
 #include <iostream>
 #include <sys/types.h>
 #include <sys/ipc.h>
@@ -58,3 +63,18 @@ main()
  
     exit(0);
 }
+
+/*
+
+=====================OUTPUT====================
+Server: hello
+Clinet : hey there
+
+Server: how are you?
+Clinet : i am fine.you?
+
+Server: fine.
+Clinet : ok.
+
+=====================OUTPUT====================
+*/

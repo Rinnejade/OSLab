@@ -1,5 +1,9 @@
-/* A simple server in the internet domain using TCP
-   The port number is passed as an argument */
+/*
+EXPT NO.05
+VINOD KUMAR S
+S7-R-062
+SOCKET SERVER
+*/
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -26,6 +30,7 @@ int main(int argc, char *argv[])
          cout<<"ERROR, no port provided\n";
          exit(1);
      }
+     while(true){
      sockfd = socket(AF_INET, SOCK_STREAM, 0);
      if (sockfd < 0) 
         error("ERROR opening socket");
@@ -43,12 +48,13 @@ int main(int argc, char *argv[])
                  &clilen);
      if (newsockfd < 0) 
           error("ERROR on accept");
-     bzero(buffer,256);
-     n = read(newsockfd,buffer,255);
-     if (n < 0) error("ERROR reading from socket");
-     cout<<"Here is the message:"<<buffer<< "\n";
-     n = write(newsockfd,"I got your message",18);
-     if (n < 0) error("ERROR writing to socket");
+         bzero(buffer,256);
+         n = read(newsockfd,buffer,255);
+         if (n < 0) error("ERROR reading from socket");
+         cout<<"Client :"<<buffer<< "\n";
+         n = write(newsockfd,"I got your message",18);
+         if (n < 0) error("ERROR writing to socket");       
+    }
      close(newsockfd);
      close(sockfd);
      return 0; 

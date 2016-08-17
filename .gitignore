@@ -1,0 +1,8 @@
+labReport/
+messagePassing/client
+messagePassing/server
+socket/client
+socket/server
+pipe/pipe
+fork/fork
+sharedMemory/shared
