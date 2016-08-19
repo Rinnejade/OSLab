@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
        cout<<"usage "<<argv[0]<<" hostname port\n";
        exit(0);
     }
-    while(true){
         portno = atoi(argv[2]);
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd < 0) 
@@ -47,6 +46,7 @@ int main(int argc, char *argv[])
         serv_addr.sin_port = htons(portno);
         if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
             error("ERROR connecting");
+    while(true){
         cout<<"Client :  ";
         bzero(buffer,256);
         fgets(buffer,255,stdin);

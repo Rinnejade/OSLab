@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
          cout<<"ERROR, no port provided\n";
          exit(1);
      }
-     while(true){
      sockfd = socket(AF_INET, SOCK_STREAM, 0);
      if (sockfd < 0) 
         error("ERROR opening socket");
@@ -44,17 +43,22 @@ int main(int argc, char *argv[])
      listen(sockfd,5);
      clilen = sizeof(cli_addr);
      newsockfd = accept(sockfd, 
-                 (struct sockaddr *) &cli_addr, 
-                 &clilen);
+                     (struct sockaddr *) &cli_addr, 
+                     &clilen);
      if (newsockfd < 0) 
-          error("ERROR on accept");
-         bzero(buffer,256);
-         n = read(newsockfd,buffer,255);
-         if (n < 0) error("ERROR reading from socket");
-         cout<<"Client :"<<buffer<< "\n";
-         n = write(newsockfd,"I got your message",18);
-         if (n < 0) error("ERROR writing to socket");       
+              error("ERROR on accept");
+     while(true){
+        bzero(buffer,256);
+        n = read(newsockfd,buffer,255);
+        if (n < 0) error("ERROR reading from socket");
+        cout<<"Client :"<<buffer<< "\n";
+        cout<<"Server : ";
+        bzero(buffer,256);
+        fgets(buffer,255,stdin);
+        n = write(newsockfd,buffer,255);
+        if (n < 0) error("ERROR writing to socket");       
     }
+
      close(newsockfd);
      close(sockfd);
      return 0; 

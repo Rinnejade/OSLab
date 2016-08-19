@@ -6,3 +6,7 @@ socket/server
 pipe/pipe
 fork/fork
 sharedMemory/shared
+server.cpp
+client.cpp
+server
+client
