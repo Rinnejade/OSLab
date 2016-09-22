@@ -6,6 +6,9 @@ socket/server
 pipe/pipe
 fork/fork
 sharedMemory/shared
+diningPhilosopher/diningPhilosopher
+diningPhilosopher/dining
+sharedMemory/shared
 server.cpp
 client.cpp
 server
