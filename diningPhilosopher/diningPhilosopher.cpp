@@ -16,14 +16,14 @@ int n;
 void *thread_func(void* arg)
 {
   int i,iteration=5;
-  int no = *(int*)arg;
-  cout<<"no : "<<no<<endl;
+  long no = (long)arg;
+  // cout<<"no : "<<no<<endl;
   // for(i=0;i<iteration;++i){
     sem_wait(&chopstick[no]);
     sem_wait(&chopstick[(no+1)%n]);
-    cout<< "Philosopher "<< no <<" eating\n";
+    cout<<  no <<" eating\n";
     sleep(1);
-    cout<< "Philosopher "<< no <<" finished eating\n";
+    cout<< no <<" finished eating\n";
     sem_post(&chopstick[no]);
     sem_post(&chopstick[(no+1)%n]);
   // }
@@ -44,7 +44,7 @@ int main()
   }
   for(i=0;i<n;i++){
     int j = i;
-    res=pthread_create(&a_thread[i],NULL,thread_func, &j);
+    res=pthread_create(&a_thread[i],NULL,thread_func, (void*)j);
     if(res!=0){
       perror("semaphore creation failed");
       exit(1);
